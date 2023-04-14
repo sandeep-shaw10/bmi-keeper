@@ -1,0 +1,12 @@
+- Toggle Theme
+- Async Storage
+- Save Users LIMIT:10
+- Add Other Calculator: [BMR, BFP, WHR, TDEE, EER]
+- Fill other Pages : About, Share, Feedback, Rate
+- UI and Status Bar
+- Add app name, Logo
+- Add meta-data
+- Add splash screen
+- Try 3 language (Hindi, Bengali, Sanskrit)
+
+- Prepare to publish
