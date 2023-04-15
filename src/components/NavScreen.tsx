@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Dispatch, SetStateAction, ReactNode, useContext } from 'react';
-import { StyleSheet, View, Text, Button, Animated, Pressable } from 'react-native';
+import React, { useState, useEffect, ReactNode, useContext } from 'react';
+import { StyleSheet, View, Text, Animated, Pressable } from 'react-native';
 import { useWindowDimensions } from 'react-native';
 import { AppStateContext } from '../../App';
 import { UI_CONTAINER } from '../assets/Config';
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const NavScreen = ({ children, headerTitle, navigation }: Props) => {
-  const {isOpen, setIsOpen} = useContext(AppStateContext)
+  const {isOpen, setIsOpen, theme} = useContext(AppStateContext)
   const { height, width } = useWindowDimensions();
   const [animatedValue] = useState(new Animated.Value(0));
   const scale = animatedValue.interpolate({ inputRange: [0, 1], outputRange: [1, 0.8] });
@@ -37,12 +37,13 @@ const NavScreen = ({ children, headerTitle, navigation }: Props) => {
         style={[
             styles.container,
             {
-            width: width,
-            height: height,
-            zIndex: 2,
-            transform: [{ scale }, { translateX }],
-            borderRadius,
-            padding: UI_CONTAINER.OUTER
+              width: width,
+              height: height,
+              zIndex: 2,
+              transform: [{ scale }, { translateX }],
+              borderRadius,
+              padding: UI_CONTAINER.OUTER,
+              backgroundColor: theme ? '#030712': '#e5e7eb',
             },
         ]}
         >
@@ -53,13 +54,13 @@ const NavScreen = ({ children, headerTitle, navigation }: Props) => {
         }}>
             <View>
             <Pressable onPress={() => setIsOpen(!isOpen)}>
-                <Text>{isOpen ? <Medical size={32} color='#343434' degree={45} /> : <Medical size={32} color='#343434' /> }</Text>
+                <Text>{isOpen ? <Medical size={32} color={`${!theme ? '#030712': '#e5e7eb'}`} degree={45} /> : <Medical size={32} color={`${!theme ? '#030712': '#e5e7eb'}`} /> }</Text>
             </Pressable>
             </View>
             <View style={{
               paddingLeft: 10
             }}>
-            <Text style={{ fontSize: 32, color: '#343434' }}>{headerTitle}</Text>
+            <Text style={{ fontSize: 32, color: !theme ? '#030712': '#e5e7eb' }}>{headerTitle}</Text>
             </View>
         </View>
         {children}
@@ -72,7 +73,6 @@ const NavScreen = ({ children, headerTitle, navigation }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     position: 'absolute',
   },
 });

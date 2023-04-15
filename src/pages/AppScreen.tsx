@@ -1,9 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useContext } from 'react';
 import {StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
-import bgStyle from '../assets/Config';
+import bgStyle, { STATUSBAR_BG } from '../assets/Config';
 import NavScreen from '../components/NavScreen';
 import BMICalculator from '../components/BMI';
+import { AppStateContext } from '../../App';
 
 
 type ComponentsProps = PropsWithChildren<{
@@ -12,10 +13,11 @@ type ComponentsProps = PropsWithChildren<{
 
 
 const AppScreen = ({children, navigation}: ComponentsProps) => {
+  const  { theme, setTheme } = useContext(AppStateContext)
   return (
-    <SafeAreaView style={bgStyle}>
-      <StatusBar barStyle='dark-content' backgroundColor={bgStyle.backgroundColor} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" style={bgStyle}>
+    <SafeAreaView style={ !theme ? bgStyle.DARK : bgStyle.LIGHT }>
+      <StatusBar barStyle={ !theme ? 'dark-content' : 'light-content' } backgroundColor={ !theme ? STATUSBAR_BG.LIGHT : STATUSBAR_BG.DARK} />
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={ !theme ? bgStyle.DARK : bgStyle.LIGHT }>
         <NavScreen navigation={navigation} headerTitle="BMI Calculator" >
           <BMICalculator/>
         </NavScreen>

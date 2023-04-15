@@ -1,9 +1,7 @@
-- Toggle Theme
 - Async Storage
 - Save Users LIMIT:10
 - Add Other Calculator: [BMR, BFP, WHR, TDEE, EER]
 - Fill other Pages : About, Share, Feedback, Rate
-- UI and Status Bar
 - Add app name, Logo
 - Add shortcut Icons
 - Add meta-data

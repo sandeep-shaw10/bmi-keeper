@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useWindowDimensions } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import { SEX, UI_CONTAINER, UI_WIDTH } from '../../assets/Config';
+import { AppStateContext } from '../../../App';
 
 
 interface Props{
@@ -16,16 +17,16 @@ interface Props{
 
 export default function AgeSexInput({ title, age, setAge, sex, setSex} : Props) {
     const { width } = useWindowDimensions();
+    const { theme } = useContext(AppStateContext);
     const UI_WIDTH_EXTEND = 30
 
-    
     return (
         <View style={[styles.container, {padding: UI_CONTAINER.INNER}]}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={[styles.title, { color: !theme ? '#030712': '#e5e7eb' }]}>{title}</Text>
             <View style={{ flexDirection: 'row' }}>
                 <View style={{ width: width-2*(UI_CONTAINER.INNER+UI_CONTAINER.OUTER)- UI_WIDTH - UI_WIDTH_EXTEND, paddingRight: 4 }} >
                     <TextInput
-                        style={[styles.input, { padding: UI_CONTAINER.INNER } ]}
+                        style={[styles.input, { padding: UI_CONTAINER.INNER, borderColor: !theme ? '#030712': '#e5e7eb', color: !theme ? '#030712': '#e5e7eb' } ]}
                         placeholder="..."
                         keyboardType="numeric"
                         value={isNaN(age) ? '' : `${age}`}
@@ -44,9 +45,9 @@ export default function AgeSexInput({ title, age, setAge, sex, setSex} : Props) 
                           }} 
                     />
                 </View>
-                <View style={[ styles.dropdown,  { width: UI_WIDTH + UI_WIDTH_EXTEND }]} >
+                <View style={[ styles.dropdown,  { borderColor: !theme ? '#030712': '#e5e7eb', width: UI_WIDTH + UI_WIDTH_EXTEND }]} >
                 <Picker
-                style={{  color: 'gray' }}
+                style={{  color: !theme ? '#030712': '#e5e7eb' }}
                     selectedValue={sex}
                     onValueChange={(sex) => setSex(sex)}>
                         {
@@ -70,19 +71,16 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 12,
         fontSize: 18,
-        borderColor: 'gray',
-        color: '#565656'
+        opacity: 0.75
     },
     dropdown: {
         marginTop: 6,
         borderWidth: 1,
         borderRadius: 12,
         fontSize: 16,
-        borderColor: 'gray',
-        color: '#565656'
+        opacity: 0.75
     },
     title:{
         fontSize: 24,
-        color: '#565656'
     }
 });

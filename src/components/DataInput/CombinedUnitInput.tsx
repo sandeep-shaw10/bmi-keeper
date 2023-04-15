@@ -16,15 +16,15 @@ interface Props{
 
 export default function CombinedUnitInput({ title, value, setValue, unitType} : Props) {
     const { width } = useWindowDimensions();
-    const { heightUnit, setHeightUnit, weightUnit, setWeightUnit } = useContext(AppStateContext)
+    const { heightUnit, setHeightUnit, weightUnit, setWeightUnit, theme } = useContext(AppStateContext)
     
     return (
         <View style={[styles.container, {padding: UI_CONTAINER.INNER}]}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={[styles.title, { color: !theme ? '#030712': '#e5e7eb'}]}>{title}</Text>
             <View style={{ flexDirection: 'row' }}>
                 <View style={{ width: width-2*(UI_CONTAINER.INNER+UI_CONTAINER.OUTER)- UI_WIDTH, paddingRight: 4 }} >
                     <TextInput
-                        style={[styles.input, { padding: UI_CONTAINER.INNER } ]}
+                        style={[styles.input, { padding: UI_CONTAINER.INNER, borderColor: !theme ? '#030712': '#e5e7eb', color: !theme ? '#030712': '#e5e7eb' } ]}
                         placeholder="..."
                         keyboardType="numeric"
                         value={value}
@@ -46,12 +46,12 @@ export default function CombinedUnitInput({ title, value, setValue, unitType} : 
                           }}
                     />
                 </View>
-                <View style={[ styles.dropdown,  { width: UI_WIDTH }]} >
+                <View style={[ styles.dropdown,  { width: UI_WIDTH, borderColor: !theme ? '#030712': '#e5e7eb' }]} >
                     { unitType === 'weight' ? 
                     
                     // Weight
                     <Picker
-                        style={{  color: 'gray' }}
+                        style={{  color: !theme ? '#030712': '#e5e7eb' }}
                             selectedValue={weightUnit.unit}
                             onValueChange={(itemValue) => {
                                 const selectedUnit = WEIGHT_UNITS.find(unit => unit.unit === itemValue);
@@ -65,7 +65,7 @@ export default function CombinedUnitInput({ title, value, setValue, unitType} : 
 
                     // Length
                     <Picker
-                    style={{  color: 'gray' }}
+                    style={{  color: !theme ? '#030712': '#e5e7eb' }}
                         selectedValue={heightUnit.unit}
                         onValueChange={(itemValue) => {
                             const selectedUnit = LENGTH_UNITS.find(unit => unit.unit === itemValue);
@@ -94,19 +94,16 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 12,
         fontSize: 18,
-        borderColor: 'gray',
-        color: '#565656'
+        opacity: 0.75
     },
     dropdown: {
         marginTop: 6,
         borderWidth: 1,
         borderRadius: 12,
         fontSize: 16,
-        borderColor: 'gray',
-        color: '#565656'
+        opacity: 0.75
     },
     title:{
         fontSize: 24,
-        color: '#565656'
     }
 });
