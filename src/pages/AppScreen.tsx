@@ -3,7 +3,7 @@ import {StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import bgStyle from '../assets/Config';
 import NavScreen from '../components/NavScreen';
-import BMICalculator from '../components/BMI/BMICalculator';
+import BMICalculator from '../components/BMI';
 
 
 type ComponentsProps = PropsWithChildren<{

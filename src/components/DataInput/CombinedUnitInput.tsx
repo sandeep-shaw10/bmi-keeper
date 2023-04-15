@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useWindowDimensions } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import { LENGTH_UNITS, UI_CONTAINER, UI_WIDTH, WEIGHT_UNITS } from '../../assets/Config';
+import { AppStateContext } from '../../../App';
 
 
 interface Props{
@@ -15,9 +16,7 @@ interface Props{
 
 export default function CombinedUnitInput({ title, value, setValue, unitType} : Props) {
     const { width } = useWindowDimensions();
-    const [selectedLanguage, setSelectedLanguage] = useState('cm');
-    const units = unitType === 'weight' ? WEIGHT_UNITS : LENGTH_UNITS
-
+    const { heightUnit, setHeightUnit, weightUnit, setWeightUnit } = useContext(AppStateContext)
     
     return (
         <View style={[styles.container, {padding: UI_CONTAINER.INNER}]}>
@@ -48,16 +47,36 @@ export default function CombinedUnitInput({ title, value, setValue, unitType} : 
                     />
                 </View>
                 <View style={[ styles.dropdown,  { width: UI_WIDTH }]} >
-                <Picker
-                style={{  color: 'gray' }}
-                    selectedValue={selectedLanguage}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setSelectedLanguage(itemValue)
-                    }>
+                    { unitType === 'weight' ? 
+                    
+                    // Weight
+                    <Picker
+                        style={{  color: 'gray' }}
+                            selectedValue={weightUnit.unit}
+                            onValueChange={(itemValue) => {
+                                const selectedUnit = WEIGHT_UNITS.find(unit => unit.unit === itemValue);
+                                if(selectedUnit) setWeightUnit(selectedUnit);
+                                else setWeightUnit(WEIGHT_UNITS[0])
+                            }}>
+                            {
+                                WEIGHT_UNITS.map(({ unit }, index) => <Picker.Item key={index} label={unit} value={unit}  /> )
+                            }
+                    </Picker>:
+
+                    // Length
+                    <Picker
+                    style={{  color: 'gray' }}
+                        selectedValue={heightUnit.unit}
+                        onValueChange={(itemValue) => {
+                            const selectedUnit = LENGTH_UNITS.find(unit => unit.unit === itemValue);
+                            if(selectedUnit) setHeightUnit(selectedUnit);
+                            else setHeightUnit(LENGTH_UNITS[0])
+                        }}>
                         {
-                            units.map(({ unit }, index) => <Picker.Item key={index} label={unit} value={unit}  /> )
+                            LENGTH_UNITS.map(({ unit }, index) => <Picker.Item key={index} label={unit} value={unit}  /> )
                         }
                     </Picker>
+                    }
                 </View>
             </View>
         </View>

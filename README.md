@@ -5,6 +5,7 @@
 - Fill other Pages : About, Share, Feedback, Rate
 - UI and Status Bar
 - Add app name, Logo
+- Add shortcut Icons
 - Add meta-data
 - Add splash screen
 - Try 3 language (Hindi, Bengali, Sanskrit)

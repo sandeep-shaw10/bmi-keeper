@@ -59,7 +59,7 @@ const NavScreen = ({ children, headerTitle, navigation }: Props) => {
             <View style={{
               paddingLeft: 10
             }}>
-            <Text style={{ fontSize: 32 }}>{headerTitle}</Text>
+            <Text style={{ fontSize: 32, color: '#343434' }}>{headerTitle}</Text>
             </View>
         </View>
         {children}

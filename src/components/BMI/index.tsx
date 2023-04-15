@@ -1,25 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { AppStateContext } from '../../../App';
 import BMICalculation from '../../utils/BMI';
 import AgeSexInput from '../DataInput/AgeSexInput';
 import CombinedUnitInput from '../DataInput/CombinedUnitInput';
 import AdultData from './AdultData';
 import ChildrenData from './ChildrenData';
-
-
-interface Props{
-  data: BMICalculationResult
-}
-
-
-const InfantData = () => {
-  return (
-    <View style={{ backgroundColor: '#fda4af', margin: 12, padding: 12, borderRadius: 12 }}>
-      <Text style={{ color: '#881337', fontWeight: 'bold', fontSize: 32 }}>Too Young</Text>
-      <Text style={{ color: 'white', fontSize: 16 }}>BMI can't be calculated</Text>
-    </View>
-  )
-}
+import InfantData from './InfantData';
 
 
 const BMICalculator = () => {
@@ -27,7 +14,8 @@ const BMICalculator = () => {
   const [age, setAge] = useState<number>(0)
   const [height, setHeight] = useState<string>('')
   const [weight, setWeight] = useState<string>('')
-  const OUTPUT = BMICalculation(age, sex, weight, height)
+  const {heightUnit, weightUnit} = useContext(AppStateContext)
+  const OUTPUT = BMICalculation(age, sex, weight, height, heightUnit.conversion, weightUnit.conversion)
 
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">

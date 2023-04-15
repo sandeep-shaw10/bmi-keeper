@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text } from 'react-native';
+import { AppStateContext } from '../../../App';
 
 
 interface Props{
@@ -7,7 +8,8 @@ interface Props{
 }
 
 
-const ChildData = ({ data }: Props) => {
+const AdultData = ({ data }: Props) => {
+    const {weightUnit } = useContext(AppStateContext)
     let { bmi, status, color, range, value } = data
     const { lower, upper } = range
     const CHART = [
@@ -18,6 +20,8 @@ const ChildData = ({ data }: Props) => {
       { label: 'Obese Class II', range: [35,39.9] },
       { label: 'Obese Class III', range: [40,'∞'] }
     ]
+    const lowerLimit = (lower).toFixed(3)
+    const upperLimit = (upper).toFixed(3)
     value = isNaN(bmi) ? -1 : value
     return (
       <View>
@@ -38,7 +42,7 @@ const ChildData = ({ data }: Props) => {
             </View>
             <View style={{ backgroundColor: 'white', padding: 6, borderRadius: 8, marginTop: 8 }}>
               <Text style={{ fontSize: 20, color: color[0], fontWeight: 'bold' }}>
-                {lower.toFixed(3)} - {upper.toFixed(3)} unit
+                {lowerLimit} - {upperLimit} {weightUnit.unit}
               </Text>
             </View>
           </View>: null}
@@ -66,4 +70,4 @@ const ChildData = ({ data }: Props) => {
   }
 
 
-export default ChildData;
+export default AdultData;

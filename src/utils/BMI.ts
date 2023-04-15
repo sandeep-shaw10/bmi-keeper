@@ -2,11 +2,13 @@ import CDCChart from "../assets/CDCChart";
 
 
 // meters and kg
-export default function BMICalculation(age: number, sex: boolean, w: string, h: string): BMICalculationResult {
+export default function BMICalculation(age: number, sex: boolean, w: string, h: string, hUnit: number, wUnit: number): BMICalculationResult {
     const weight = parseFloat(w)
     const height = parseFloat(h)
-    let bmi = weight / (height * height); 
+    let bmi = (weight * wUnit) / (height * height * hUnit * hUnit); 
     let {status, color, range, value } = getStatus(bmi, age, sex, height) 
+    range.lower = (range.lower/wUnit)*hUnit*hUnit
+    range.upper = (range.upper/wUnit)*hUnit*hUnit
     return { bmi, status, color, range, value };
 }
 
