@@ -19,22 +19,22 @@ const SettingScreen = ({children, navigation}: ComponentsProps) => {
     <SafeAreaView>
       <StatusBar barStyle={ !theme ? 'dark-content' : 'light-content' } backgroundColor={ !theme ? STATUSBAR_BG.LIGHT : STATUSBAR_BG.DARK} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" >
-       <NavScreen navigation={navigation} headerTitle="Setting" >
+       <NavScreen navigation={navigation} headerTitle={t('Settings')} >
         <View style={{ paddingVertical: 20, paddingHorizontal: 12 }}>
 
             <View>
-              <Text style={[styles.header, { color: fontColor1 }]}>Change Theme</Text>
+              <Text style={[styles.header, { color: fontColor1 }]}>{t('Change Theme')}</Text>
               <TouchableOpacity onPress={() => setTheme(!theme)} >
                 <View style={styles.button}>
                   <Text style={styles.buttonText}>
-                    { theme ? 'DARK' : 'LIGHT' }
+                    { !theme ? t('DARK') : t('LIGHT') }
                   </Text>
                 </View>
               </TouchableOpacity>
             </View>
 
             <View>
-              <Text style={[styles.header, { color: fontColor1 }]}>Select Language</Text>
+              <Text style={[styles.header, { color: fontColor1 }]}>{t('Select Language')}</Text>
               <View>
                 <TouchableOpacity onPress={() => setLanguage('en')}>
                   <View style={styles.multiBtn}>
@@ -43,7 +43,7 @@ const SettingScreen = ({children, navigation}: ComponentsProps) => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => setLanguage('hi')}>
                   <View style={styles.multiBtn}>
-                    <Text style={styles.buttonText}>HINDI (HI) </Text>
+                    <Text style={styles.buttonText}> हिंदी (HI) </Text>
                   </View>
                 </TouchableOpacity>
               </View>

@@ -1,11 +1,12 @@
-- Async Storage
+-[x] Async Storage
+- Initial Setting
 - Save Users LIMIT:10
-- Add Other Calculator: [BMR, BFP, WHR, TDEE, EER]
-- Fill other Pages : About, Share, Feedback, Rate
+- Fill other Pages : About, History
 - Add app name, Logo
 - Add shortcut Icons
 - Add meta-data
 - Add splash screen
-- Try 3 language (Hindi, Bengali, Sanskrit)
+- Try 1 language (Bengali)
+
 
 - Prepare to publish

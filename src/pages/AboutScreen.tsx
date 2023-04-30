@@ -11,12 +11,12 @@ type ComponentsProps = PropsWithChildren<{
 
 
 const AboutScreen = ({children, navigation}: ComponentsProps) => {
-  const  { theme } = useContext(AppStateContext)
+  const  { theme, t } = useContext(AppStateContext)
   return (
     <SafeAreaView>
       <StatusBar barStyle={ !theme ? 'dark-content' : 'light-content' } backgroundColor={ !theme ? STATUSBAR_BG.LIGHT : STATUSBAR_BG.DARK} />
       <ScrollView contentInsetAdjustmentBehavior="automatic" >
-       <NavScreen navigation={navigation} headerTitle="About" >
+       <NavScreen navigation={navigation} headerTitle={t("About")} >
         <View>
             <Text style={{ color: 'cyan' }}>ABOUT</Text>
           </View>

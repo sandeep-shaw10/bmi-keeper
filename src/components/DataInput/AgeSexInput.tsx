@@ -17,7 +17,7 @@ interface Props{
 
 export default function AgeSexInput({ title, age, setAge, sex, setSex} : Props) {
     const { width } = useWindowDimensions();
-    const { theme } = useContext(AppStateContext);
+    const { theme, t } = useContext(AppStateContext);
     const UI_WIDTH_EXTEND = 30
 
     return (
@@ -51,7 +51,7 @@ export default function AgeSexInput({ title, age, setAge, sex, setSex} : Props) 
                     selectedValue={sex}
                     onValueChange={(sex) => setSex(sex)}>
                         {
-                            SEX.map(({ val, label }, index) => <Picker.Item key={index} label={label} value={val}  /> )
+                            SEX.map(({ val, label }, index) => <Picker.Item key={index} label={t(`${label}`)} value={val}  /> )
                         }
                     </Picker>
                 </View>

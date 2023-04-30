@@ -6,15 +6,13 @@ import { AppStateContext } from '../../App';
 const Navigation = ({ navigation }: any) => {
 
   const {height, width} = useWindowDimensions();
-  const {isOpen, setIsOpen, theme } = useContext(AppStateContext)
+  const {isOpen, setIsOpen, theme, t } = useContext(AppStateContext)
   const links = [
-    { text: 'BMI', to: 'Home' },
-    { text: 'About', to: 'About' },
-    { text: 'Settings', to: 'Setting' },
-    { text: 'History', to: 'About' },
-    { text: 'Share US', to: 'About' },
-    { text: 'Rate US', to: 'About' },
-    { text: 'Feedback', to: 'About' }
+    { text: t('BMI'), to: 'Home' },
+    { text: t('About'), to: 'About' },
+    { text: t('Settings'), to: 'Setting' },
+    { text: t('Share Us'), to: 'Share' },
+    { text: t('Rate Us'), to: 'Rate' }
   ]
 
   return (

@@ -43,7 +43,7 @@ const NavScreen = ({ children, headerTitle, navigation }: Props) => {
               transform: [{ scale }, { translateX }],
               borderRadius,
               padding: UI_CONTAINER.OUTER,
-              backgroundColor: theme ? '#030712': '#e5e7eb',
+              backgroundColor: theme ? '#060e23': '#f7fefe',
             },
         ]}
         >
@@ -54,13 +54,13 @@ const NavScreen = ({ children, headerTitle, navigation }: Props) => {
         }}>
             <View>
             <Pressable onPress={() => setIsOpen(!isOpen)}>
-                <Text>{isOpen ? <Medical size={32} color={`${!theme ? '#030712': '#e5e7eb'}`} degree={45} /> : <Medical size={32} color={`${!theme ? '#030712': '#e5e7eb'}`} /> }</Text>
+                <Text>{isOpen ? <Medical size={32} color={`${!theme ? '#060e23': '#f7fefe'}`} degree={45} /> : <Medical size={32} color={`${!theme ? '#060e23': '#f7fefe'}`} /> }</Text>
             </Pressable>
             </View>
             <View style={{
               paddingLeft: 10
             }}>
-            <Text style={{ fontSize: 32, color: !theme ? '#030712': '#e5e7eb' }}>{headerTitle}</Text>
+            <Text style={{ fontSize: 32, color: !theme ? '#060e23': '#f7fefe' }}>{headerTitle}</Text>
             </View>
         </View>
         {children}

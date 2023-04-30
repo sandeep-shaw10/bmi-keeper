@@ -16,7 +16,7 @@ interface Props{
 
 export default function CombinedUnitInput({ title, value, setValue, unitType} : Props) {
     const { width } = useWindowDimensions();
-    const { heightUnit, setHeightUnit, weightUnit, setWeightUnit, theme } = useContext(AppStateContext)
+    const { heightUnit, setHeightUnit, weightUnit, setWeightUnit, theme, t } = useContext(AppStateContext)
     
     return (
         <View style={[styles.container, {padding: UI_CONTAINER.INNER}]}>
@@ -59,7 +59,7 @@ export default function CombinedUnitInput({ title, value, setValue, unitType} : 
                                 else setWeightUnit(WEIGHT_UNITS[0])
                             }}>
                             {
-                                WEIGHT_UNITS.map(({ unit }, index) => <Picker.Item key={index} label={unit} value={unit}  /> )
+                                WEIGHT_UNITS.map(({ unit }, index) => <Picker.Item key={index} label={t(`${unit}`)} value={unit}  /> )
                             }
                     </Picker>:
 
@@ -73,7 +73,7 @@ export default function CombinedUnitInput({ title, value, setValue, unitType} : 
                             else setHeightUnit(LENGTH_UNITS[0])
                         }}>
                         {
-                            LENGTH_UNITS.map(({ unit }, index) => <Picker.Item key={index} label={unit} value={unit}  /> )
+                            LENGTH_UNITS.map(({ unit }, index) => <Picker.Item key={index} label={t(`${unit}`)} value={unit}  /> )
                         }
                     </Picker>
                     }

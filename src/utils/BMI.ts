@@ -33,9 +33,9 @@ function getStatus(bmi: number, age: number, sex: boolean, height: number) {
         if(bmi < 18.5) { color = ['#60a5fa', '#1e3a8a']; value = 0; status = 'Underweight' }
         else if(bmi >= 18.5 && bmi < 25) { color = ['#2dd4bf', '#14532d']; value = 1; status = 'Normal' }
         else if(bmi >= 25 && bmi < 30) { color = ['orange', '#881337']; value = 2; status = 'Overweight' }
-        else if(bmi >= 30 && bmi < 35) { color = ['#f472b6', '#9d174d']; value = 3; status = 'Obese Class I' }
-        else if(bmi >= 35 && bmi < 40) { color = ['#fb7185', '#9f1239']; value = 4; status = 'Obese Class II' }
-        else { color = ['#f87171', '#7f1d1d']; value = 5; status = 'Obese Class III' }
+        else if(bmi >= 30 && bmi < 35) { color = ['#f472b6', '#9d174d']; value = 3; status = 'ObeseC1' }
+        else if(bmi >= 35 && bmi < 40) { color = ['#fb7185', '#9f1239']; value = 4; status = 'ObeseC2' }
+        else { color = ['#f87171', '#7f1d1d']; value = 5; status = 'ObeseC3' }
         range.lower = 18.5*height*height
         range.upper = 24.9*height*height
     }

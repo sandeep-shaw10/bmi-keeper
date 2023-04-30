@@ -46,5 +46,7 @@ export {
     UI_CONTAINER,
     UI_WIDTH,
     SEX,
-    STATUSBAR_BG
+    STATUSBAR_BG,
+    BG_COLOR_DARK,
+    BG_COLOR_LIGHT
 }
