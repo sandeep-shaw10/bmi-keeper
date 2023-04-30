@@ -1,6 +1,7 @@
 // BG COLOR
 const BG_COLOR_DARK = '#c2dfe7'
 const BG_COLOR_LIGHT = '#0f172a'
+const SPLASH_BG = '#0FD2FF'
 const bgStyle = { 
     DARK: { backgroundColor: BG_COLOR_DARK },
     LIGHT: { backgroundColor: BG_COLOR_LIGHT }
@@ -55,5 +56,6 @@ export {
     STATUSBAR_BG,
     BG_COLOR_DARK,
     BG_COLOR_LIGHT,
-    APP_LINK
+    APP_LINK,
+    SPLASH_BG
 }
