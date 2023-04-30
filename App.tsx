@@ -24,6 +24,7 @@ const defaultValue: AppStateContextValue = {
     language: 'en',
     setLanguage: () => 'en',
     t: null,
+    colorScheme: 'dark'
 }
 
 const AppStateContext = createContext(defaultValue);
@@ -49,6 +50,7 @@ const App = () => {
         language,
         setLanguage,
         t,
+        colorScheme
     }
 
     useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useContext } from 'react';
-import { View, Text, StatusBar, ScrollView, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StatusBar, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppStateContext } from '../../App';
 import { STATUSBAR_BG } from '../assets/Config';
@@ -12,8 +12,13 @@ type ComponentsProps = PropsWithChildren<{
 
 const SettingScreen = ({children, navigation}: ComponentsProps) => {
 
-  const  { theme, setTheme, setLanguage, t } = useContext(AppStateContext)
+  const  { theme, setTheme, setLanguage, t, colorScheme } = useContext(AppStateContext)
   const fontColor1 =!theme ? '#030712': '#e5e7eb'
+  const restoreSetting = () => {
+    setLanguage('en')
+    console.log(colorScheme)
+    setTheme(colorScheme === 'dark')
+  }
 
   return (
     <SafeAreaView>
@@ -53,8 +58,17 @@ const SettingScreen = ({children, navigation}: ComponentsProps) => {
                 </TouchableOpacity>
               </View>
             </View>
-          </View>
 
+            <View style={{ marginTop: 32 }}>
+              <Text style={[styles.header, { color: fontColor1 }]}>{t('Advance')}</Text>
+              <TouchableOpacity onPress={restoreSetting} >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>{t('Restore')}</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+        </View>
         </NavScreen>
       </ScrollView>
     </SafeAreaView>

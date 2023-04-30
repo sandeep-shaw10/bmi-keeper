@@ -17,7 +17,8 @@ type AppStateContextValue = {
     setWeightUnit: (weightUnit: UNITProps) => void,
     language: string,
     setLanguage: (language: string) => void,
-    t: TFunction<"translation", undefined, "translation">
+    t: TFunction<"translation", undefined, "translation">,
+    colorScheme: ColorSchemeName
 };
 
 

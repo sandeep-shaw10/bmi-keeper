@@ -17,7 +17,7 @@ const ShareScreen = ({children, navigation}: ComponentsProps) => {
   const shareApp = async () => {
     try {
       const result = await Share.share({
-        message: `${t("msg")} \n ${APP_LINK.AMAZON}`,
+        message: `BMI Keeper \n${t("msg")} \n${APP_LINK.AMAZON}`,
         url: APP_LINK.AMAZON,
         title: `${t("BMI")}${t("Calculator")}`,
       });
