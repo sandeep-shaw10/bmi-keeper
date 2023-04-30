@@ -46,6 +46,11 @@ const SettingScreen = ({children, navigation}: ComponentsProps) => {
                     <Text style={styles.buttonText}> हिंदी (HI) </Text>
                   </View>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={() => setLanguage('bn')}>
+                  <View style={styles.multiBtn}>
+                    <Text style={styles.buttonText}> বাংলা (BN) </Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
           </View>
