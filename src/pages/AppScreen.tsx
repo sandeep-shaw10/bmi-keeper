@@ -13,7 +13,7 @@ type ComponentsProps = PropsWithChildren<{
 
 
 const AppScreen = ({children, navigation}: ComponentsProps) => {
-  const  { theme, setTheme } = useContext(AppStateContext)
+  const  { theme } = useContext(AppStateContext)
   return (
     <SafeAreaView style={ !theme ? bgStyle.DARK : bgStyle.LIGHT }>
       <StatusBar barStyle={ !theme ? 'dark-content' : 'light-content' } backgroundColor={ !theme ? STATUSBAR_BG.LIGHT : STATUSBAR_BG.DARK} />

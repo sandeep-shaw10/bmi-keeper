@@ -14,7 +14,10 @@ type AppStateContextValue = {
     heightUnit: UNITProps;
     setHeightUnit: (heightUnit: UNITProps) => void
     weightUnit: UNITProps;
-    setWeightUnit: (weightUnit: UNITProps) => void
+    setWeightUnit: (weightUnit: UNITProps) => void,
+    language: string,
+    setLanguage: (language: string) => void,
+    t: TFunction<"translation", undefined, "translation">
 };
 
 

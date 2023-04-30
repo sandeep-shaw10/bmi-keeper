@@ -12,7 +12,7 @@ type ComponentsProps = PropsWithChildren<{
 
 const SettingScreen = ({children, navigation}: ComponentsProps) => {
 
-  const  { theme, setTheme } = useContext(AppStateContext)
+  const  { theme, setTheme, setLanguage, t } = useContext(AppStateContext)
   const fontColor1 =!theme ? '#030712': '#e5e7eb'
 
   return (
@@ -33,7 +33,23 @@ const SettingScreen = ({children, navigation}: ComponentsProps) => {
               </TouchableOpacity>
             </View>
 
+            <View>
+              <Text style={[styles.header, { color: fontColor1 }]}>Select Language</Text>
+              <View>
+                <TouchableOpacity onPress={() => setLanguage('en')}>
+                  <View style={styles.multiBtn}>
+                    <Text style={styles.buttonText}>ENGLISH (EN) </Text>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setLanguage('hi')}>
+                  <View style={styles.multiBtn}>
+                    <Text style={styles.buttonText}>HINDI (HI) </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
+
         </NavScreen>
       </ScrollView>
     </SafeAreaView>
@@ -58,6 +74,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 12,
     color: 'white',
+  },
+  multiBtn: {
+    marginTop: 12,
+    width: 160,
+    alignItems: 'center',
+    backgroundColor: '#2196F3',
+    borderRadius: 12
   }
 });
 
