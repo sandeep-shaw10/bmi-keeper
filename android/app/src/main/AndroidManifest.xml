@@ -9,6 +9,12 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+      <meta-data
+        android:name="com.example.myapp.description"
+        android:value="This Health Calculator app calculates Body Mass Index including children and teenager from age 2 to 20 along with adults, available in English, Hindi and Bengali" />
+      <meta-data
+        android:name="com.example.myapp.feature"
+        android:value="BMI, Height, Weight, Health, Normal, Underweight, Overweight, Obese, Calculator, Body, Mass, Index" />
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
