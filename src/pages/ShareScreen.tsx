@@ -3,7 +3,7 @@ import { View, Text, StatusBar, ScrollView, StyleSheet, TouchableOpacity, Share 
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppStateContext } from '../../App';
 import NavScreen from '../components/NavScreen';
-import { STATUSBAR_BG } from '../assets/Config';
+import { APP_LINK, STATUSBAR_BG } from '../assets/Config';
 import ShareSVG from '../components/SVG/Share';
 
 type ComponentsProps = PropsWithChildren<{
@@ -17,8 +17,8 @@ const ShareScreen = ({children, navigation}: ComponentsProps) => {
   const shareApp = async () => {
     try {
       const result = await Share.share({
-        message: t("msg"),
-        url: 'https://www.amazon.com/dp/B0C1XC555F',
+        message: `${t("msg")} \n ${APP_LINK.AMAZON}`,
+        url: APP_LINK.AMAZON,
         title: `${t("BMI")}${t("Calculator")}`,
       });
       if (result.action === Share.sharedAction) {

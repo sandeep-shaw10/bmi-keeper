@@ -38,6 +38,12 @@ const STATUSBAR_BG = {
     DARK: BG_COLOR_LIGHT
 }
 
+// LINK
+const APP_LINK = {
+    GITHUB: "https://github.com/sandeep-shaw10",
+    AMAZON: "https://www.amazon.com/dp/B0C1XC555F"
+}
+
 
 export default bgStyle
 export {
@@ -48,5 +54,6 @@ export {
     SEX,
     STATUSBAR_BG,
     BG_COLOR_DARK,
-    BG_COLOR_LIGHT
+    BG_COLOR_LIGHT,
+    APP_LINK
 }

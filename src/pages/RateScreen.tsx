@@ -3,7 +3,7 @@ import { View, Text, StatusBar, ScrollView, StyleSheet, TouchableOpacity, Linkin
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppStateContext } from '../../App';
 import NavScreen from '../components/NavScreen';
-import { STATUSBAR_BG, BG_COLOR_DARK as dark, BG_COLOR_LIGHT as light } from '../assets/Config';
+import { STATUSBAR_BG, APP_LINK } from '../assets/Config';
 import Star from '../components/SVG/Star';
 
 type ComponentsProps = PropsWithChildren<{
@@ -21,13 +21,13 @@ const RateScreen = ({children, navigation}: ComponentsProps) => {
   const allBtn = [
     {
         name: t("Github"),
-        link: "https://github.com/sandeep-shaw10",
+        link: APP_LINK.GITHUB,
         bg: "#161b22",
         color: "#f0f6fc"
     },
     {
         name: t("Amazon Appstore"),
-        link: "https://www.amazon.com/s?i=mobile-apps&rh=p_4%3ASandNativeDev&search-type=ss",
+        link: APP_LINK.AMAZON,
         bg: "#232f3e",
         color: "#ff9900"
     },
