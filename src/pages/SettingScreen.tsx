@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   button: {
     marginBottom: 30,
     marginTop: 12,
-    width: 160,
+    width: 200,
     alignItems: 'center',
     backgroundColor: '#2196F3',
     borderRadius: 12
@@ -74,10 +74,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 12,
     color: 'white',
+    fontSize: 20
   },
   multiBtn: {
     marginTop: 12,
-    width: 160,
+    width: 200,
     alignItems: 'center',
     backgroundColor: '#2196F3',
     borderRadius: 12
