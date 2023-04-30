@@ -1,4 +1,3 @@
-- Add Logo
 - Add shortcut Icons
 - Add meta-data
 - Add splash screen
