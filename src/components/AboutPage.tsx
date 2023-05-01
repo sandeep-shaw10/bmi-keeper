@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useContext } from 'react';
-import { View, Text, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Dimensions, useWindowDimensions } from 'react-native';
 import { AppStateContext } from '../../App';
 
 type ComponentsProps = PropsWithChildren<{
@@ -8,7 +8,7 @@ type ComponentsProps = PropsWithChildren<{
 
 const AboutPage = ({children }: ComponentsProps) => {
   const  { theme, t } = useContext(AppStateContext)
-  const screenWidth = Dimensions.get('window').width;
+  const { width: screenWidth  } = useWindowDimensions();
   const sizeHead = screenWidth > 392 ? 32 : 24
   const sizeData = screenWidth > 392 ? 18 : 14
   return (

@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useContext, useEffect } from 'react';
-import { View, Text, StatusBar, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StatusBar, ScrollView, StyleSheet, Dimensions, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppStateContext } from '../../App';
 import { SPLASH_BG, SPLASH_SCREEN_TIME, STATUSBAR_BG } from '../assets/Config';
@@ -11,7 +11,7 @@ type ComponentsProps = PropsWithChildren<{
 
 
 const SplashScreen = ({children, navigation}: ComponentsProps) => {
-  const height = Dimensions.get('window').height
+  const {height} = useWindowDimensions()
   const { quickLink } = useContext(AppStateContext)
 
   useEffect(() => {
