@@ -18,7 +18,8 @@ type AppStateContextValue = {
     language: string,
     setLanguage: (language: string) => void,
     t: TFunction<"translation", undefined, "translation">,
-    colorScheme: ColorSchemeName
+    colorScheme: ColorSchemeName,
+    quickLink: string
 };
 
 

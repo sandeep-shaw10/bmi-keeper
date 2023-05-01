@@ -1,10 +1,12 @@
 import React, { createContext, useEffect, useState } from 'react';
 import Routes from './src/Routes';
-import {useColorScheme} from 'react-native';
+import {useColorScheme, DeviceEventEmitter} from 'react-native';
 import { LENGTH_UNITS, WEIGHT_UNITS } from './src/assets/Config';
 import { getDataByKey, getStrByKey, setDataByKey } from './src/utils/AsyncStorage';
 import { useTranslation } from 'react-i18next';
 import './i18n'
+import QuickActions, { ShortcutItem } from 'react-native-quick-actions';
+
 
 
 const AppTheme = {
@@ -24,7 +26,8 @@ const defaultValue: AppStateContextValue = {
     language: 'en',
     setLanguage: () => 'en',
     t: null,
-    colorScheme: 'dark'
+    colorScheme: 'dark',
+    quickLink: 'Home'
 }
 
 const AppStateContext = createContext(defaultValue);
@@ -38,6 +41,7 @@ const App = () => {
     const [heightUnit, setHeightUnit] = useState(LENGTH_UNITS[0])
     const [weightUnit, setWeightUnit] = useState(WEIGHT_UNITS[0])
     const [language, setLanguage] = useState('en')
+    const [quickLink, setQuickLink] = useState("Home")
     const contextValue = {
         isOpen,
         theme,
@@ -50,7 +54,8 @@ const App = () => {
         language,
         setLanguage,
         t,
-        colorScheme
+        colorScheme,
+        quickLink // redirect from quickLink via Splash Screen
     }
 
     useEffect(() => {
@@ -73,6 +78,52 @@ const App = () => {
         fetchData();
         fetchLanguage();
       }, []);
+
+      useEffect(() => {
+
+        const SHORTCUTS = {
+          ABOUT: "about",
+          SETTING: "setting"
+        }
+
+        const processShortCut = (item: ShortcutItem) => {
+          if(item.type === SHORTCUTS.ABOUT) setQuickLink("About")
+          if(item.type === SHORTCUTS.SETTING) setQuickLink("Setting")
+        }
+    
+        QuickActions.setShortcutItems([
+          {
+            type: SHORTCUTS.ABOUT,
+            title: "About",
+            subtitle: "Learn more about this app",
+            icon: "about",
+            userInfo: { url: "About" }
+          },
+          {
+            type: SHORTCUTS.SETTING,
+            title: "Settings",
+            subtitle: "App Configuration",
+            icon: "setting",
+            userInfo: { url: "Setting" }
+          }
+        ])
+    
+        QuickActions.popInitialAction().then((item: ShortcutItem) => {
+          processShortCut(item)
+        }).catch((error) => {
+          console.log(`Error: ${error}`)
+        })
+    
+        DeviceEventEmitter.addListener('quickActionShortcut', (item: ShortcutItem) => {
+          processShortCut(item)
+        })
+    
+        return () => {
+          QuickActions.clearShortcutItems()
+          DeviceEventEmitter.removeAllListeners()
+        }
+    
+      }, [])
 
       useEffect(() => {
         setDataByKey('@bmi_calc_theme', `${theme}`)

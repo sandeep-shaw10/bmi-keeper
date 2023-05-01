@@ -45,6 +45,8 @@ const APP_LINK = {
     AMAZON: "https://www.amazon.com/dp/B0C1XC555F"
 }
 
+const SPLASH_SCREEN_TIME = 2000
+
 
 export default bgStyle
 export {
@@ -57,5 +59,6 @@ export {
     BG_COLOR_DARK,
     BG_COLOR_LIGHT,
     APP_LINK,
-    SPLASH_BG
+    SPLASH_BG,
+    SPLASH_SCREEN_TIME
 }

@@ -1,16 +1,30 @@
-import React, { PropsWithChildren, useContext } from 'react';
+import React, { PropsWithChildren, useContext, useEffect } from 'react';
 import { View, Text, StatusBar, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppStateContext } from '../../App';
-import { SPLASH_BG, STATUSBAR_BG } from '../assets/Config';
+import { SPLASH_BG, SPLASH_SCREEN_TIME, STATUSBAR_BG } from '../assets/Config';
 import HeartSVG from '../components/SVG/Heart';
 
 type ComponentsProps = PropsWithChildren<{
+  navigation: any
 }>;
 
 
-const SplashScreen = ({children}: ComponentsProps) => {
+const SplashScreen = ({children, navigation}: ComponentsProps) => {
   const height = Dimensions.get('window').height
+  const { quickLink } = useContext(AppStateContext)
+
+  useEffect(() => {
+    // console.log(`Shortcut Link: ${quickLink}`)
+    const timer = setTimeout(() => {
+      if(quickLink !== "Home"){
+        navigation.navigate(quickLink)
+      }
+    }, SPLASH_SCREEN_TIME*0.75);
+
+    return () => clearTimeout(timer);
+  }, [quickLink])
+
   return (
     <SafeAreaView>
       <StatusBar barStyle='light-content' backgroundColor={SPLASH_BG} />

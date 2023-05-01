@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useState, useEffect } from 'react';
+import { SPLASH_SCREEN_TIME } from './assets/Config';
 import AboutScreen from './pages/AboutScreen';
 import AppScreen from './pages/AppScreen';
 import RateScreen from './pages/RateScreen';
@@ -15,7 +16,6 @@ const Stack = createNativeStackNavigator();
 const Routes = () => {
 
   const [splashScreenVisible, setSplashScreenVisible] = useState(true)
-  const SPLASH_SCREEN_TIME = 2000
 
   useEffect(() => {
     const timer = setTimeout(() => {
