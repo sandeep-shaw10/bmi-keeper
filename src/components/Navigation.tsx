@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View, Text, useWindowDimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, useWindowDimensions, TouchableOpacity, Image } from 'react-native';
 import { AppStateContext } from '../../App';
 
 
@@ -14,11 +14,16 @@ const Navigation = ({ navigation }: any) => {
     { text: t('Share Us'), to: 'Share' },
     { text: t('Rate Us'), to: 'Rate' }
   ]
+  var icon =  require('../assets/logo.png')
 
   return (
     <View style={[styles.container, { width: width, height: height, opacity: isOpen ? 1: 0, backgroundColor: theme ? '#0f172a' : '#c2dfe7' }]}>
       <View>
-        <Text style={{ fontSize: width/12, color: !theme ? '#111827': '#e5e7eb' }} >Logo</Text>
+      <Image
+        source={icon}
+        style={{width: 96, height: 96 }}
+      />
+        <Text style={{ fontSize: width/13, color: !theme ? '#111827': '#e5e7eb', paddingBottom: 12 }} >BMI Keeper</Text>
         <View style={{ paddingLeft: 10, paddingTop: 10 }}>
           {links.map( ({ text, to }, index) => <View key={index} style={{ paddingBottom: 10 }}>
             <TouchableOpacity onPress={() => {
@@ -29,6 +34,16 @@ const Navigation = ({ navigation }: any) => {
             </TouchableOpacity>
           </View>)}
         </View>
+      </View>
+      <View style={{ position: 'absolute', bottom: 0, alignItems: 'center' }}>
+        <Text style={{ 
+            fontSize: 16, 
+            fontStyle: 'italic', 
+            color: !theme ? '#111827': '#e5e7eb',
+            padding: 24 
+          }} >
+          v1.0.0
+        </Text>
       </View>
     </View>
   );
