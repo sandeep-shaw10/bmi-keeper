@@ -72,7 +72,7 @@ With support for Hindi, English, and Bengali languages, you can use the app in t
 You can install the app by downloading the APK file from here and installing it on your Android device. 
 
 ![android-tested](https://img.shields.io/badge/tested-✔️-green)
-![apk](https://img.shields.io/badge/apk-Unavailable-232f3e)
+[![apk](https://img.shields.io/badge/apk-Amazon%20Appstore-232f3e)](https://www.amazon.com/dp/B0C46Z63T9)
 
 ## iOS
 For iOS devices, the app is currently not available on the App Store.

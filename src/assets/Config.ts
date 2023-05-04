@@ -41,8 +41,8 @@ const STATUSBAR_BG = {
 
 // LINK
 const APP_LINK = {
-    GITHUB: "https://github.com/sandeep-shaw10",
-    AMAZON: "https://www.amazon.com/dp/B0C1XC555F"
+    GITHUB: "https://github.com/sandeep-shaw10/bmi-keeper",
+    AMAZON: "https://www.amazon.com/dp/B0C46Z63T9"
 }
 
 const SPLASH_SCREEN_TIME = 2000
